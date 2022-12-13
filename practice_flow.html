@@ -326,7 +326,6 @@
 
                 setObstacle(scene.obstacleX, scene.obstacleY, true);
                 scene.gravity = 0.0;
-                scene.showPressure = true;
                 scene.showSmoke = true;
                 scene.showStreamlines = false;
                 scene.showVelocities = false;
@@ -401,9 +400,9 @@
                     }
                     else if (scene.showSmoke) {
                         var s = f.m[i*n + j];
-                        color[0] = 255*s;
-                        color[1] = 255*s;
-                        color[2] = 255*s;
+                        color[0] = 255 - 255*s;
+                        color[1] = 255 - 255*s;
+                        color[2] = 255 - 255*s;
                         if (scene.sceneNr == 2)
                             color = getSciColor(s, 0.0, 1.0);
                     }
@@ -509,10 +508,7 @@
 
                 c.strokeW
                 r = scene.obstacleRadius + f.h;
-                if (scene.showPressure)
-                    c.fillStyle = "#000000";
-                else
-                    c.fillStyle = "#DDDDDD";
+                c.fillStyle = "#000000";
                 c.beginPath();	
                 c.arc(
                     cX(scene.obstacleX), cY(scene.obstacleY), cScale * r, 0.0, 2.0 * Math.PI); 
